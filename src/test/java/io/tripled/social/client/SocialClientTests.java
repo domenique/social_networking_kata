@@ -9,7 +9,7 @@ public class SocialClientTests {
 
 	@Test
 	public void canRunTests() {
-		assertThat(true, is(true));
+		System.out.println("Hooray!");
 
 	}
 }
