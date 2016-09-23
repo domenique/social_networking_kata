@@ -1,0 +1,44 @@
+plugins {
+  id "com.github.samueltbrown.cucumber" version "0.9"
+}
+group 'io.tripled'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+  mavenCentral()
+}
+
+cucumber {
+  formats = [
+      'pretty',
+      'json:build/cucumber.json',
+      'junit:build/cucumber.xml',
+      'html:build/reports/cucumber'
+  ]
+  glueDirs = [
+      'src/cucumber/java'
+  ]
+  featureDirs = [
+      'src/cucumber/resources'
+  ]
+  monochrome = false
+  strict = false
+  dryRun = false
+  ignoreFailures = false
+
+  jvmOptions {
+    maxHeapSize = '512m'
+    environment 'ENV', 'staging'
+  }
+}
+
+dependencies {
+  testCompile 'junit:junit:4.11'
+
+  testCompile('info.cukes:cucumber-java:1.2.4')
+  cucumberRuntime 'info.cukes:cucumber-java:1.2.4'
+}
+
+tasks.check.dependsOn tasks.cucumber
