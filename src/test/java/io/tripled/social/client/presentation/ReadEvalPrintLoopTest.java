@@ -1,5 +1,6 @@
 package io.tripled.social.client.presentation;
 
+import io.tripled.social.client.presentation.controller.EchoController;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,13 +14,13 @@ public class ReadEvalPrintLoopTest {
   private ReadEvalPrintLoop repl;
   private TestInput input;
   private TestOutput output;
-  private EchoCommand echoCommand;
+  private EchoController echoCommand;
 
   @Before
   public void setUpReplWithEchoCommand() {
     input = new TestInput();
     output = new TestOutput();
-    echoCommand = new EchoCommand();
+    echoCommand = new EchoController();
     repl = new ReadEvalPrintLoop(input, output, Collections.singletonList(echoCommand));
   }
 

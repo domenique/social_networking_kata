@@ -1,11 +1,13 @@
-package io.tripled.social.client.presentation;
+package io.tripled.social.client.presentation.controller;
 
+import io.tripled.social.client.presentation.Controller;
+import io.tripled.social.client.presentation.Output;
 import org.hamcrest.Matcher;
 
 import static org.junit.Assert.assertThat;
 
 
-public class EchoCommand implements Command {
+public class EchoController implements Controller {
 
   private String message;
 

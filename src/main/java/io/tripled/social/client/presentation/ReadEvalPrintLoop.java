@@ -9,16 +9,16 @@ public class ReadEvalPrintLoop {
   private static final String QUIT_COMMAND = "\\q";
   private final Input input;
   private final Output output;
-  private final List<Command> commands;
+  private final List<Controller> controllers;
   private boolean quitCommandReceived;
 
-  public ReadEvalPrintLoop(Input input, Output output, List<Command> commands) {
+  public ReadEvalPrintLoop(Input input, Output output, List<Controller> controllers) {
     Objects.requireNonNull(input, "the Input cannot be null");
     Objects.requireNonNull(output, "the Output cannot be null");
-    Objects.requireNonNull(commands, "The Commands cannot be null");
+    Objects.requireNonNull(controllers, "The Controllers cannot be null");
     this.input = input;
     this.output = output;
-    this.commands = Collections.unmodifiableList(commands);
+    this.controllers = Collections.unmodifiableList(controllers);
   }
 
   public boolean isStopped() {
@@ -38,7 +38,7 @@ public class ReadEvalPrintLoop {
   }
 
   private void executeCommands(String readLine) {
-    commands.stream()
+    controllers.stream()
         .filter(c -> c.supports(readLine))
         .forEach(c -> c.execute(readLine, output));
   }
