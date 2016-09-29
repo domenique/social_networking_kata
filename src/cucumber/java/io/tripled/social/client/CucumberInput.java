@@ -5,21 +5,19 @@ import io.tripled.social.client.presentation.Input;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class CucumberInput implements Input {
 
-  private final Deque<String> inputs;
+  private final BlockingDeque<String> inputs;
 
   CucumberInput() {
-    inputs = new LinkedList<>();
+    inputs = new LinkedBlockingDeque<>();
   }
 
-  CucumberInput(Deque<String> inputs) {
-    this.inputs = new LinkedList<>(inputs);
-  }
-
-  public void addInput(String... inputs) {
-    this.inputs.addAll(Arrays.asList(inputs));
+  public void addInput(String input) {
+    this.inputs.offer(input);
   }
 
   @Override

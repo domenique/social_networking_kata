@@ -43,7 +43,7 @@ public class ReadEvalPrintLoopTest {
   public void quits() {
     input.addInput("\\q");
 
-    repl.start();
+    repl.run();
 
     assertThat(repl.isStopped(), is(true));
     echoCommand.assertMessage(nullValue(String.class));
@@ -54,7 +54,7 @@ public class ReadEvalPrintLoopTest {
   public void echoesInput() {
     input.addInput("hello", "\\q");
 
-    repl.start();
+    repl.run();
 
     assertThat(repl.isStopped(), is(true));
     echoCommand.assertMessage(equalTo("hello"));

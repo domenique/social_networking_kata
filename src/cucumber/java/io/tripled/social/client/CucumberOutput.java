@@ -1,32 +1,43 @@
 package io.tripled.social.client;
 
 import io.tripled.social.client.presentation.Output;
-import org.hamcrest.Matcher;
 
-import java.util.LinkedList;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 class CucumberOutput implements Output {
 
-  private final LinkedList<String> outputs;
+  private final BlockingDeque<String> outputs;
+  private CountDownLatch latch = new CountDownLatch(1);
 
   CucumberOutput() {
-    this.outputs = new LinkedList<>();
+    this.outputs = new LinkedBlockingDeque<>();
   }
 
   @Override
   public void print(String message) {
-    this.outputs.add(message);
+    String[] split = message.split("\\n");
+    for (String part : split) {
+      this.outputs.offer(part);
+    }
+    latch.countDown();
   }
 
-  void assertContains(Matcher<String> message) {
-    assertThat("The SocialNetwork did not response the expected message.", this.outputs, hasItem(message));
-  }
+  void assertContains(String[] lines) {
+    try {
+      latch.await(100, TimeUnit.MILLISECONDS);
+      for (String line : lines) {
+        String resultLine = outputs.poll();
+        assertThat(resultLine, equalTo(line));
+      }
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
 
-  void assertSize(int size) {
-    assertThat("The SocialNetwork did not respond the expected amount of messages.", this.outputs, hasSize(size));
   }
 }

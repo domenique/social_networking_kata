@@ -1,16 +1,19 @@
 Feature: Posting and reading a message
 
   Background:
-    Given "Alice" sends message "I love the weather today"
+    Given "Alice" sends message "I love the weather today."
+    And 180 seconds pass by
     And "Bob" sends message "Damn! We lost!"
-    And "Bob" sends message "Good game though"
+    And 60 seconds pass by
+    And "Bob" sends message "Good game though."
+    And 60 seconds pass by
 
 
   Scenario: Messages posted by Alice can be viewed.
     When the user reads the timeline of "Alice"
     Then the system responds with
       """
-      I love the weather today (5 minutes ago)
+      I love the weather today. (5 minutes ago)
       """
 
   Scenario: Messages posted by Bob can be viewed.

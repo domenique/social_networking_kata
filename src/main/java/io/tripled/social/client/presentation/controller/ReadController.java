@@ -27,7 +27,7 @@ public class ReadController extends AbstractController {
     if (matcher.matches()) {
       String userName = matcher.group(1).trim();
 
-      readMessagesApplicationService.readMessage(userName);
+      output.print(readMessagesApplicationService.readMessage(userName));
     }
   }
 }

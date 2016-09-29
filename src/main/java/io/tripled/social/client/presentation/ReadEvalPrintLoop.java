@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ReadEvalPrintLoop {
+public class ReadEvalPrintLoop implements Runnable {
 
   private static final String QUIT_COMMAND = "\\q";
   private final Input input;
@@ -25,7 +25,8 @@ public class ReadEvalPrintLoop {
     return quitCommandReceived;
   }
 
-  public void start() {
+  @Override
+  public void run() {
     quitCommandReceived = false;
     while (!quitCommandReceived) {
       String readLine = input.read();
