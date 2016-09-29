@@ -26,7 +26,7 @@ public class SocialNetworkApplication {
   public static void main(String[] args) {
     ReadEvalPrintLoop repl = createRepl();
 
-    repl.run();
+    new Thread(repl).start();
   }
 
   private static ReadEvalPrintLoop createRepl() {
