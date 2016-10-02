@@ -9,7 +9,7 @@ public class InMemorySocialNetworkRepository implements SocialNetworkRepository 
   private final SocialNetwork socialNetwork;
 
   public InMemorySocialNetworkRepository(DateTimeProvider dateTimeProvider) {
-    socialNetwork = new SocialNetwork(new InMemoryMessageRepository(), dateTimeProvider);
+    socialNetwork = new SocialNetwork(new InMemoryMessages(), new InMemoryRelationships(), dateTimeProvider);
   }
 
   @Override

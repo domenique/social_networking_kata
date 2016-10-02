@@ -21,19 +21,23 @@ public class WallControllerTest {
 
   @Test
   public void executesCommand() {
-    String message = "wall Alice";
+    String message = "Alice wall";
 
-    wallController.execute(message, new TestOutput());
+    TestOutput output = new TestOutput();
+    wallController.execute(message, output);
 
     assertThat(service.userName, equalTo("Alice"));
+    output.assertContains(equalTo("Alice"));
   }
 
   @Test
   public void executesCommandWithTrimmedMessage() {
-    String message = "wall  Alice  ";
+    String message = "Alice   wall  ";
 
-    wallController.execute(message, new TestOutput());
+    TestOutput output = new TestOutput();
+    wallController.execute(message, output);
 
     assertThat(service.userName, equalTo("Alice"));
+    output.assertContains(equalTo("Alice"));
   }
 }

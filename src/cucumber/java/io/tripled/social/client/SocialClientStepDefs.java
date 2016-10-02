@@ -43,8 +43,8 @@ public class SocialClientStepDefs {
     ReadEvalPrintLoop repl = new ReadEvalPrintLoop(input, output, Arrays.asList(
         new PostController(new DefaultPostMessageUseCase(socialNetworkRepository, dateTimeProvider)),
         new ReadController(new DefaultReadMessagesUseCase(socialNetworkRepository)),
-        new FollowController(new DefaultFollowUserUseCase()),
-        new WallController(new DefaultReadWallUseCase())
+        new FollowController(new DefaultFollowUserUseCase(socialNetworkRepository)),
+        new WallController(new DefaultReadWallUseCase(socialNetworkRepository))
     ));
 
     Thread thread = new Thread(repl);

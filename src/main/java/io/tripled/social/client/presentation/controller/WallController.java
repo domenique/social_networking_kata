@@ -15,7 +15,7 @@ public class WallController extends AbstractController {
 
   @Override
   protected Pattern getPattern() {
-    return Pattern.compile("wall (.+)");
+    return Pattern.compile("(.+) wall");
   }
 
   @Override
@@ -26,7 +26,7 @@ public class WallController extends AbstractController {
     if (matcher.matches()) {
       String userName = matcher.group(1).trim();
 
-      readWallUseCase.readWall(userName);
+      output.print(readWallUseCase.readWall(userName));
     }
   }
 }

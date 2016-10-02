@@ -7,6 +7,6 @@ public class SpiedWallMessageApplicationService implements ReadWallUseCase {
   @Override
   public String readWall(String userName) {
     this.userName = userName;
-    return null;
+    return userName;
   }
 }

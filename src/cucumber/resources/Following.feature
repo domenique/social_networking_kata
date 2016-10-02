@@ -7,7 +7,7 @@ Feature: Following an other user
     And 60 seconds pass by
     And "Bob" sends message "Good game though."
     And 60 seconds pass by
-    And "Charlie" sends message "I'm in New York today! Anyone wants to have coffee?"
+    And "Charlie" sends message "I'm in New York today! Anyone wants to have a coffee?"
 
   Scenario: Charlie can subscribe to Alice's timeline.
     Given "Charlie" follows "Alice"
@@ -16,7 +16,7 @@ Feature: Following an other user
     Then the system responds with
     """
     Charlie - I'm in New York today! Anyone wants to have a coffee? (2 seconds ago)
-    Alice - I love the weather today (5 minutes ago)
+    Alice - I love the weather today. (5 minutes ago)
     """
 
   Scenario:
@@ -27,7 +27,7 @@ Feature: Following an other user
     Then the system responds with
     """
     Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)
-    Bob - Good game though. (1 minutes ago)
-    Bob - Damn! We lost! (2 minute ago)
-    Alice - I love the weather today (5 minutes ago)
+    Bob - Good game though. (1 minute ago)
+    Bob - Damn! We lost! (2 minutes ago)
+    Alice - I love the weather today. (5 minutes ago)
     """
