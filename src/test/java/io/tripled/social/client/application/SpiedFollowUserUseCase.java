@@ -6,8 +6,10 @@ public class SpiedFollowUserUseCase implements FollowUserUseCase {
   public String userNameToFollow;
 
   @Override
-  public void follow(String userName, String userNameToFollow) {
+  public String follow(String userName, String userNameToFollow) {
     this.userName = userName;
     this.userNameToFollow = userNameToFollow;
+
+    return userName + " will follow " + userNameToFollow;
   }
 }

@@ -16,7 +16,7 @@ class CucumberInput implements Input {
     inputs = new LinkedBlockingDeque<>();
   }
 
-  public void addInput(String input) {
+  public void sendInput(String input) {
     this.inputs.offer(input);
   }
 

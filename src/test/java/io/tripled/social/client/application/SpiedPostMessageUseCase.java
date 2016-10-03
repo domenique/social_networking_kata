@@ -6,8 +6,10 @@ public class SpiedPostMessageUseCase implements PostMessageUseCase {
   public String message;
 
   @Override
-  public void postMessage(String userName, String message) {
+  public String postMessage(String userName, String message) {
     this.userName = userName;
     this.message = message;
+
+    return userName + " posted: " + message;
   }
 }

@@ -28,7 +28,7 @@ public class PostController extends AbstractController {
       String userName = matcher.group(1).trim();
       String message = matcher.group(2).trim();
 
-      postMessageUseCase.postMessage(userName, message);
+      output.print(postMessageUseCase.postMessage(userName, message));
     }
   }
 }

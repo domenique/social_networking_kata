@@ -1,10 +1,10 @@
 package io.tripled.social.client.presentation.controller;
 
-import io.tripled.social.client.application.FollowUserUseCase;
-import io.tripled.social.client.presentation.Output;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.tripled.social.client.application.FollowUserUseCase;
+import io.tripled.social.client.presentation.Output;
 
 public class FollowController extends AbstractController {
 
@@ -28,7 +28,7 @@ public class FollowController extends AbstractController {
       String userName = matcher.group(1).trim();
       String userNameToFollow = matcher.group(2).trim();
 
-      followUserUseCase.follow(userName, userNameToFollow);
+      output.print(followUserUseCase.follow(userName, userNameToFollow));
     }
   }
 }

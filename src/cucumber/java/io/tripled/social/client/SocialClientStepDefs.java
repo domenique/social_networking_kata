@@ -53,18 +53,19 @@ public class SocialClientStepDefs {
 
   @After
   public void afterScenario() {
-    input.addInput("\\q");
+    input.sendInput("\\q");
 
   }
 
   @Given("^\"([^\"]*)\" sends message \"([^\"]*)\"$")
   public void sendsMessage(String userName, String message) throws Throwable {
-    input.addInput(userName + " -> " + message);
+    input.sendInput(userName + " -> " + message);
+    output.assertContains(userName + " posted: " + message);
   }
 
   @When("^the user reads the timeline of \"([^\"]*)\"$")
   public void theUserReadsTheTimelineOf(String userName) throws Throwable {
-    input.addInput(userName);
+    input.sendInput(userName);
   }
 
   @Then("^the system responds with$")
@@ -75,12 +76,13 @@ public class SocialClientStepDefs {
 
   @Given("^\"([^\"]*)\" follows \"([^\"]*)\"$")
   public void follows(String userName, String follower) throws Throwable {
-    input.addInput(userName + " follows " + follower);
+    input.sendInput(userName + " follows " + follower);
+    output.assertContains(userName + " will follow " + follower);
   }
 
   @When("^the user reads the wall of \"([^\"]*)\"$")
   public void theUserReadsTheWallOf(String userName) throws Throwable {
-    input.addInput(userName + " wall");
+    input.sendInput(userName + " wall");
   }
 
   @And("^(\\d+) seconds pass by$")

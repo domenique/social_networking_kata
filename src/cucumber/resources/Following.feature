@@ -8,10 +8,10 @@ Feature: Following an other user
     And "Bob" sends message "Good game though."
     And 60 seconds pass by
     And "Charlie" sends message "I'm in New York today! Anyone wants to have a coffee?"
+    And 2 seconds pass by
 
   Scenario: Charlie can subscribe to Alice's timeline.
     Given "Charlie" follows "Alice"
-    And 2 seconds pass by
     When the user reads the wall of "Charlie"
     Then the system responds with
     """
@@ -20,9 +20,9 @@ Feature: Following an other user
     """
 
   Scenario:
+    And 13 seconds pass by
     Given "Charlie" follows "Alice"
     And "Charlie" follows "Bob"
-    And 15 seconds pass by
     When the user reads the wall of "Charlie"
     Then the system responds with
     """

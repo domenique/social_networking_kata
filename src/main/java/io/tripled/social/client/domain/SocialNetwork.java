@@ -18,8 +18,10 @@ public class SocialNetwork {
     this.dateTimeProvider = dateTimeProvider;
   }
 
-  public void postMessage(Message message) {
+  public String postMessage(Message message) {
     messages.save(message);
+
+    return message.getUserName() + " posted: " + message.getMessage();
   }
 
   public String read(UserName userName) {
@@ -28,8 +30,10 @@ public class SocialNetwork {
     return READING_FRMT.print(messagesToPrint, dateTimeProvider);
   }
 
-  public void follow(UserName userName, UserName userNameToFollow) {
+  public String follow(UserName userName, UserName userNameToFollow) {
     relationships.save(new FollowingRelationship(userName, userNameToFollow));
+
+    return userName + " will follow " + userNameToFollow;
   }
 
   public String readWall(UserName userName) {

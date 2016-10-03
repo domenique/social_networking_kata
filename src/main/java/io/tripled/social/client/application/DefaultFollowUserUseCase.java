@@ -13,9 +13,9 @@ public class DefaultFollowUserUseCase implements FollowUserUseCase {
   }
 
   @Override
-  public void follow(String userName, String userNameToFollow) {
+  public String follow(String userName, String userNameToFollow) {
     SocialNetwork socialNetwork = socialNetworkRepository.get();
 
-    socialNetwork.follow(new UserName(userName), new UserName(userNameToFollow));
+    return socialNetwork.follow(new UserName(userName), new UserName(userNameToFollow));
   }
 }

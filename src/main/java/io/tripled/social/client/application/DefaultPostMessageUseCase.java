@@ -17,11 +17,11 @@ public class DefaultPostMessageUseCase implements PostMessageUseCase {
   }
 
   @Override
-  public void postMessage(String userName, String message) {
+  public String postMessage(String userName, String message) {
     SocialNetwork socialNetwork = socialNetworkRepository.get();
 
     Message msg = new Message(new UserName(userName), message, dateTimeProvider);
 
-    socialNetwork.postMessage(msg);
+    return socialNetwork.postMessage(msg);
   }
 }
