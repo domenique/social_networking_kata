@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Message implements Comparable<Message> {
+
   private UserName userName;
   private String message;
   private LocalDateTime localDateTime;
@@ -26,14 +27,22 @@ public class Message implements Comparable<Message> {
     return localDateTime;
   }
 
+  String printWith(MessagePrinter printer, DateTimeProvider dateTimeProvider) {
+    return printer.print(dateTimeProvider, userName.getUserName(), message, localDateTime);
+}
+
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     Message message1 = (Message) o;
     return Objects.equals(userName, message1.userName) &&
-        Objects.equals(message, message1.message) &&
-        Objects.equals(localDateTime, message1.localDateTime);
+           Objects.equals(message, message1.message) &&
+           Objects.equals(localDateTime, message1.localDateTime);
   }
 
   @Override
@@ -41,7 +50,7 @@ public class Message implements Comparable<Message> {
     return Objects.hash(userName, message, localDateTime);
   }
 
-  public boolean writtenBy(UserName userName) {
+  public boolean isWrittenBy(UserName userName) {
     return this.userName.equals(userName);
   }
 

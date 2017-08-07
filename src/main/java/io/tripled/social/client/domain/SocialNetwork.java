@@ -9,8 +9,8 @@ public class SocialNetwork {
   private final Messages messages;
   private final Relationships relationships;
   private final DateTimeProvider dateTimeProvider;
-  private static final MessageFormatter READING_FRMT = MessageFormatter.ofPattern("%msg (%t)");
-  private static final MessageFormatter WALL_FRMT = MessageFormatter.ofPattern("%un - %msg (%t)");
+  private static final MessagePrinter READING_PRINTER = MessagePrinter.ofPattern("%msg (%t)");
+  private static final MessagePrinter WALL_PRINTER = MessagePrinter.ofPattern("%un - %msg (%t)");
 
   public SocialNetwork(Messages messages, Relationships relationships, DateTimeProvider dateTimeProvider) {
     this.messages = messages;
@@ -27,7 +27,7 @@ public class SocialNetwork {
   public String read(UserName userName) {
     List<Message> messagesToPrint = messages.findAllByUserName(userName);
 
-    return READING_FRMT.print(messagesToPrint, dateTimeProvider);
+    return printAll(messagesToPrint, READING_PRINTER);
   }
 
   public String follow(UserName userName, UserName userNameToFollow) {
@@ -44,6 +44,14 @@ public class SocialNetwork {
         .collect(Collectors.toList()));
 
     List<Message> messagesToPrint = messages.findAllByUserNames(userNames);
-    return WALL_FRMT.print(messagesToPrint, dateTimeProvider);
+
+    return printAll(messagesToPrint, WALL_PRINTER);
+  }
+
+  private String printAll(List<Message> messagesToPrint, MessagePrinter printer) {
+    return messagesToPrint.stream()
+        .map(msg -> msg.printWith(printer, dateTimeProvider))
+        .collect(Collectors.joining(System.lineSeparator()))
+        .trim();
   }
 }

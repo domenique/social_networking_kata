@@ -26,7 +26,7 @@ public class InMemoryMessages implements Messages {
   @Override
   public List<Message> findAllByUserName(UserName userName) {
     return messages.stream()
-        .filter(m -> m.writtenBy(userName))
+        .filter(m -> m.isWrittenBy(userName))
         .sorted()
         .collect(Collectors.toList());
   }
@@ -36,7 +36,7 @@ public class InMemoryMessages implements Messages {
     return messages.stream()
         .filter(m -> {
           for (UserName userName : userNames) {
-            if (m.writtenBy(userName)) {
+            if (m.isWrittenBy(userName)) {
               return true;
             }
           }

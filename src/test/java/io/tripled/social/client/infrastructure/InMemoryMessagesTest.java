@@ -52,7 +52,7 @@ public class InMemoryMessagesTest {
     List<Message> messagesFromAlice = messages.findAllByUserName(alice);
 
     assertThat(messagesFromAlice, hasSize(2));
-    messagesFromAlice.forEach(msg -> assertThat(msg.writtenBy(alice), is(true)));
+    messagesFromAlice.forEach(msg -> assertThat(msg.isWrittenBy(alice), is(true)));
   }
 
   @Test
