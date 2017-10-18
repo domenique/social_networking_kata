@@ -40,12 +40,12 @@ public class SocialClientStepDefs {
     dateTimeProvider = new CucumberDateTimeProvider(Clock.fixed(Instant.now(), ZoneId.systemDefault()));
     InMemorySocialNetworkRepository socialNetworkRepository = new InMemorySocialNetworkRepository(dateTimeProvider);
 
-    ReadEvalPrintLoop repl = new ReadEvalPrintLoop(input, output, Arrays.asList(
+    ReadEvalPrintLoop repl = new ReadEvalPrintLoop(input, output,
         new PostController(new DefaultPostMessageUseCase(socialNetworkRepository, dateTimeProvider)),
         new ReadController(new DefaultReadMessagesUseCase(socialNetworkRepository)),
-        new FollowController(new DefaultFollowUserUseCase(socialNetworkRepository)),
-        new WallController(new DefaultReadWallUseCase(socialNetworkRepository))
-    ));
+        new WallController(new DefaultReadWallUseCase(socialNetworkRepository)),
+        new FollowController(new DefaultFollowUserUseCase(socialNetworkRepository))
+    );
 
     Thread thread = new Thread(repl);
     thread.start();

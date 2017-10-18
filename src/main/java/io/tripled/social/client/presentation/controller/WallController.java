@@ -1,12 +1,11 @@
 package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.ReadWallUseCase;
+import io.tripled.social.client.presentation.Controller;
 import io.tripled.social.client.presentation.Output;
+import io.tripled.social.client.presentation.request.WallCliRequest;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class WallController extends AbstractController {
+public class WallController implements Controller<WallCliRequest> {
   private ReadWallUseCase readWallUseCase;
 
   public WallController(ReadWallUseCase readWallUseCase) {
@@ -14,19 +13,7 @@ public class WallController extends AbstractController {
   }
 
   @Override
-  protected Pattern getPattern() {
-    return Pattern.compile("(.+) wall");
-  }
-
-  @Override
-  public void execute(String inputLine, Output output) {
-    Matcher matcher = getPattern()
-        .matcher(inputLine.trim());
-
-    if (matcher.matches()) {
-      String userName = matcher.group(1).trim();
-
-      output.print(readWallUseCase.readWall(userName));
-    }
+  public void execute(WallCliRequest request, Output output) {
+    output.print(readWallUseCase.readWall(request.getUserName()));
   }
 }

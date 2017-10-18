@@ -1,7 +1,6 @@
 package io.tripled.social.client.presentation;
 
-public interface Controller {
-  boolean supports(String readLine);
+public interface Controller<T> {
 
-  void execute(String inputLine, Output output);
+  void execute(T request, Output output);
 }

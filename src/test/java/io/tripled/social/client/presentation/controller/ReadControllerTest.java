@@ -2,6 +2,7 @@ package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.SpiedReadMessagesUseCase;
 import io.tripled.social.client.presentation.TestOutput;
+import io.tripled.social.client.presentation.request.ReadCliRequest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,19 +22,11 @@ public class ReadControllerTest {
 
   @Test
   public void executesCommand() {
-    String message = "Alice";
+    ReadCliRequest request = new ReadCliRequest("Alice");
 
-    readController.execute(message, new TestOutput());
-
-    assertThat(service.userName, equalTo("Alice"));
-  }
-
-  @Test
-  public void executesCommandWithTrimmedMessage() {
-    String message = "  Alice  ";
-
-    readController.execute(message, new TestOutput());
+    readController.execute(request, new TestOutput());
 
     assertThat(service.userName, equalTo("Alice"));
   }
+
 }

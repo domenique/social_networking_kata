@@ -10,6 +10,7 @@ import io.tripled.social.client.infrastructure.SystemDateTimeProvider;
 import io.tripled.social.client.presentation.Input;
 import io.tripled.social.client.presentation.Output;
 import io.tripled.social.client.presentation.ReadEvalPrintLoop;
+import io.tripled.social.client.presentation.request.RequestDispatcher;
 import io.tripled.social.client.presentation.console.ConsoleInput;
 import io.tripled.social.client.presentation.console.ConsoleOutput;
 import io.tripled.social.client.presentation.controller.FollowController;
@@ -19,7 +20,6 @@ import io.tripled.social.client.presentation.controller.WallController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class SocialNetworkApplication {
 
@@ -36,11 +36,10 @@ public class SocialNetworkApplication {
     DateTimeProvider dateTimeProvider = new SystemDateTimeProvider();
     InMemorySocialNetworkRepository socialNetworkRepository = new InMemorySocialNetworkRepository(dateTimeProvider);
 
-    return new ReadEvalPrintLoop(input, output, Arrays.asList(
+    return new ReadEvalPrintLoop(input, output,
         new PostController(new DefaultPostMessageUseCase(socialNetworkRepository, dateTimeProvider)),
         new ReadController(new DefaultReadMessagesUseCase(socialNetworkRepository)),
-        new FollowController(new DefaultFollowUserUseCase(socialNetworkRepository)),
-        new WallController(new DefaultReadWallUseCase(socialNetworkRepository))
-    ));
+        new WallController(new DefaultReadWallUseCase(socialNetworkRepository)),
+        new FollowController(new DefaultFollowUserUseCase(socialNetworkRepository)));
   }
 }

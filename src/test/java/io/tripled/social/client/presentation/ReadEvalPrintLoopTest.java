@@ -1,12 +1,10 @@
 package io.tripled.social.client.presentation;
 
-import io.tripled.social.client.presentation.controller.EchoController;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Collections;
-
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ReadEvalPrintLoopTest {
@@ -14,29 +12,22 @@ public class ReadEvalPrintLoopTest {
   private ReadEvalPrintLoop repl;
   private TestInput input;
   private TestOutput output;
-  private EchoController echoCommand;
 
   @Before
   public void setUpReplWithEchoCommand() {
     input = new TestInput();
     output = new TestOutput();
-    echoCommand = new EchoController();
-    repl = new ReadEvalPrintLoop(input, output, Collections.singletonList(echoCommand));
+    repl = new ReadEvalPrintLoop(input, output, null, null, null, null);
   }
 
   @Test(expected = NullPointerException.class)
   public void throwsExceptionWithNullInput() {
-    new ReadEvalPrintLoop(null, output, Collections.emptyList());
+    new ReadEvalPrintLoop(null, output, null, null, null, null);
   }
 
   @Test(expected = NullPointerException.class)
   public void throwsExceptionWithNullOutput() {
-    new ReadEvalPrintLoop(new TestInput(), null, Collections.emptyList());
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void throwsExceptionWithNullCommands() {
-    new ReadEvalPrintLoop(new TestInput(), new TestOutput(), null);
+    new ReadEvalPrintLoop(new TestInput(), null, null, null, null, null);
   }
 
   @Test
@@ -46,18 +37,7 @@ public class ReadEvalPrintLoopTest {
     repl.run();
 
     assertThat(repl.isStopped(), is(true));
-    echoCommand.assertMessage(nullValue(String.class));
     output.assertIsEmpty();
   }
 
-  @Test
-  public void echoesInput() {
-    input.addInput("hello", "\\q");
-
-    repl.run();
-
-    assertThat(repl.isStopped(), is(true));
-    echoCommand.assertMessage(equalTo("hello"));
-    output.assertContains(equalTo("hello"));
-  }
 }

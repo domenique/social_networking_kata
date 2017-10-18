@@ -1,12 +1,11 @@
 package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.PostMessageUseCase;
+import io.tripled.social.client.presentation.Controller;
 import io.tripled.social.client.presentation.Output;
+import io.tripled.social.client.presentation.request.PostCliRequest;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class PostController extends AbstractController {
+public class PostController implements Controller<PostCliRequest> {
 
   private PostMessageUseCase postMessageUseCase;
 
@@ -15,20 +14,7 @@ public class PostController extends AbstractController {
   }
 
   @Override
-  protected Pattern getPattern() {
-    return Pattern.compile("(.+) -> (.+)");
-  }
-
-  @Override
-  public void execute(String inputLine, Output output) {
-    Matcher matcher = getPattern()
-        .matcher(inputLine.trim());
-
-    if (matcher.matches()) {
-      String userName = matcher.group(1).trim();
-      String message = matcher.group(2).trim();
-
-      output.print(postMessageUseCase.postMessage(userName, message));
-    }
+  public void execute(PostCliRequest request, Output output) {
+    output.print(postMessageUseCase.postMessage(request.getUserName(), request.getMessage()));
   }
 }

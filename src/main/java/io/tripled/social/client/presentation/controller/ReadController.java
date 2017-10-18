@@ -1,12 +1,11 @@
 package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.ReadMessagesUseCase;
+import io.tripled.social.client.presentation.Controller;
 import io.tripled.social.client.presentation.Output;
+import io.tripled.social.client.presentation.request.ReadCliRequest;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class ReadController extends AbstractController {
+public class ReadController implements Controller<ReadCliRequest> {
 
   private ReadMessagesUseCase readMessagesApplicationService;
 
@@ -15,19 +14,7 @@ public class ReadController extends AbstractController {
   }
 
   @Override
-  protected Pattern getPattern() {
-    return Pattern.compile("(\\w+)");
-  }
-
-  @Override
-  public void execute(String inputLine, Output output) {
-    Matcher matcher = getPattern()
-        .matcher(inputLine.trim());
-
-    if (matcher.matches()) {
-      String userName = matcher.group(1).trim();
-
-      output.print(readMessagesApplicationService.readMessage(userName));
-    }
+  public void execute(ReadCliRequest request, Output output) {
+    output.print(readMessagesApplicationService.readMessage(request.getUserName()));
   }
 }

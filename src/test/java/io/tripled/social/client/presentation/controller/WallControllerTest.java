@@ -2,6 +2,7 @@ package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.SpiedWallMessageApplicationService;
 import io.tripled.social.client.presentation.TestOutput;
+import io.tripled.social.client.presentation.request.WallCliRequest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,23 +22,13 @@ public class WallControllerTest {
 
   @Test
   public void executesCommand() {
-    String message = "Alice wall";
+    WallCliRequest request = new WallCliRequest("Alice");
 
     TestOutput output = new TestOutput();
-    wallController.execute(message, output);
+    wallController.execute(request, output);
 
     assertThat(service.userName, equalTo("Alice"));
     output.assertContains(equalTo("Alice"));
   }
 
-  @Test
-  public void executesCommandWithTrimmedMessage() {
-    String message = "Alice   wall  ";
-
-    TestOutput output = new TestOutput();
-    wallController.execute(message, output);
-
-    assertThat(service.userName, equalTo("Alice"));
-    output.assertContains(equalTo("Alice"));
-  }
 }

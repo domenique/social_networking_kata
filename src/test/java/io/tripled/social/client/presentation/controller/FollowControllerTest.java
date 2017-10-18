@@ -2,6 +2,7 @@ package io.tripled.social.client.presentation.controller;
 
 import io.tripled.social.client.application.SpiedFollowUserUseCase;
 import io.tripled.social.client.presentation.TestOutput;
+import io.tripled.social.client.presentation.request.FollowCliRequest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,21 +22,12 @@ public class FollowControllerTest {
 
   @Test
   public void executesCommand() {
-    String message = "Charlie follows Alice";
+    FollowCliRequest request = new FollowCliRequest("Charlie", "Alice");
 
-    followController.execute(message, new TestOutput());
-
-    assertThat(service.userName, equalTo("Charlie"));
-    assertThat(service.userNameToFollow, equalTo("Alice"));
-  }
-
-  @Test
-  public void executesCommandWithTrimmedMessage() {
-    String message = "  Charlie    follows   Alice   ";
-
-    followController.execute(message, new TestOutput());
+    followController.execute(request, new TestOutput());
 
     assertThat(service.userName, equalTo("Charlie"));
     assertThat(service.userNameToFollow, equalTo("Alice"));
   }
+
 }
