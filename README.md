@@ -55,18 +55,18 @@ Implement a console-based social networking application (similar to Twitter) sat
 + Cleaning and recompiling modules in module output folder
 
 ```$sh
-rm -rf outcli/*;javac -d outcli --module-source-path src/modules -m domain,presentation,application,infrastructure
+rm -rf outcli/*;javac -d outcli --module-source-path src/modules -m domain,presentation,application,infrastructure,main
 ```
 
 + Compile the normal src/main with modules on the classpath
 ```$sh
-javac -d out -cp outcli/domain:outcli/application:outcli/infrastructure:outcli/presentation  src/main/java/**/*.java
+javac -d out -cp outcli/domain:outcli/application:outcli/infrastructure:outcli/presentation:outcli/main  src/main/java/**/*.java
 ```
 
 + Run the java application, module path with class path
 
 ```$sh
-java --module-path outcli -cp out --add-modules domain,application,infrastructure,presentation io.tripled.social.client.SocialNetworkApplication
+java --module-path outcli -cp out --add-modules domain,application,infrastructure,presentation,main io.tripled.social.client.SocialNetworkApplication
 ```
 
 + If the application runs,
