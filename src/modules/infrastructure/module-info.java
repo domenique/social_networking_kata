@@ -1,0 +1,3 @@
+module infrastructure {
+  requires domain;
+}

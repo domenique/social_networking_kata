@@ -51,7 +51,7 @@ Implement a console-based social networking application (similar to Twitter) sat
 **CODE SUBMISSION:** Add the code to your own Github account and send us the link.
 
 ```$sh
-rm -rf outcli/*;javac -d outcli --module-source-path src/modules -m domain,vuilbak,application
-javac -d out -cp outcli/domain:outcli/application  src/main/java/**/*.java
-java --module-path outcli -cp out --add-modules domain,application io.tripled.social.client.SocialNetworkApplication
+rm -rf outcli/*;javac -d outcli --module-source-path src/modules -m domain,vuilbak,application,infrastructure
+javac -d out -cp outcli/domain:outcli/application:outcli/infrastructure  src/main/java/**/*.java
+java --module-path outcli -cp out --add-modules domain,application,infrastructure io.tripled.social.client.SocialNetworkApplication
 ```
