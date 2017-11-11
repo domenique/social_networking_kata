@@ -8,6 +8,10 @@ public class InMemorySocialNetworkRepository implements SocialNetworkRepository 
 
   private final SocialNetwork socialNetwork;
 
+  public InMemorySocialNetworkRepository() {
+    this(new SystemDateTimeProvider());
+  }
+
   public InMemorySocialNetworkRepository(DateTimeProvider dateTimeProvider) {
     socialNetwork = new SocialNetwork(new InMemoryMessages(), new InMemoryRelationships(), dateTimeProvider);
   }
