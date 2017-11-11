@@ -66,7 +66,7 @@ javac -d out -cp outcli/domain:outcli/application:outcli/infrastructure:outcli/p
 + Run the java application, module path with class path
 
 ```$sh
-java --module-path outcli -cp out --add-modules domain,application,infrastructure,presentation,main io.tripled.social.client.SocialNetworkApplication
+java --module-path outcli --add-modules main io.tripled.social.client.SocialNetworkApplication io.tripled.social.client.SocialNetworkApplication
 ```
 
 + If the application runs,
