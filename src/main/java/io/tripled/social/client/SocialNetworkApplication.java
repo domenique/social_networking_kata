@@ -1,16 +1,15 @@
 package io.tripled.social.client;
 
-import io.tripled.social.client.application.DefaultFollowUserUseCase;
-import io.tripled.social.client.application.DefaultPostMessageUseCase;
-import io.tripled.social.client.application.DefaultReadMessagesUseCase;
-import io.tripled.social.client.application.DefaultReadWallUseCase;
+import io.tripled.social.client.application.internal.DefaultFollowUserUseCase;
+import io.tripled.social.client.application.internal.DefaultPostMessageUseCase;
+import io.tripled.social.client.application.internal.DefaultReadMessagesUseCase;
+import io.tripled.social.client.application.internal.DefaultReadWallUseCase;
 import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.infrastructure.InMemorySocialNetworkRepository;
 import io.tripled.social.client.infrastructure.SystemDateTimeProvider;
 import io.tripled.social.client.presentation.Input;
 import io.tripled.social.client.presentation.Output;
 import io.tripled.social.client.presentation.ReadEvalPrintLoop;
-import io.tripled.social.client.presentation.request.RequestDispatcher;
 import io.tripled.social.client.presentation.console.ConsoleInput;
 import io.tripled.social.client.presentation.console.ConsoleOutput;
 import io.tripled.social.client.presentation.controller.FollowController;
