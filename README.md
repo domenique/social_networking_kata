@@ -68,3 +68,10 @@ Run the java application
 ```$sh
 java --module-path outcli -cp out --add-modules domain,application,infrastructure,presentation io.tripled.social.client.SocialNetworkApplication
 ```
+
+If the application runs,
+
+```text
+guido -> toffe jongen
+\q
+``` 
