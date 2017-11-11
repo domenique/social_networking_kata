@@ -1,5 +1,6 @@
-package io.tripled.social.client.application;
+package io.tripled.social.client.application.internal;
 
+import io.tripled.social.client.application.PostMessageUseCase;
 import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.domain.Message;
 import io.tripled.social.client.domain.SocialNetwork;
