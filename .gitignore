@@ -5,3 +5,5 @@ target/
 .idea/
 classes/
 .java-version
+out
+outcli
