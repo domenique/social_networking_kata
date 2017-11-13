@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 public class SocialNetwork {
 
+  private static final MessagePrinter READING_PRINTER = MessagePrinter.ofPattern("%msg (%t)");
+  private static final MessagePrinter WALL_PRINTER = MessagePrinter.ofPattern("%un - %msg (%t)");
   private final Messages messages;
   private final Relationships relationships;
   private final DateTimeProvider dateTimeProvider;
-  private static final MessagePrinter READING_PRINTER = MessagePrinter.ofPattern("%msg (%t)");
-  private static final MessagePrinter WALL_PRINTER = MessagePrinter.ofPattern("%un - %msg (%t)");
 
   public SocialNetwork(Messages messages, Relationships relationships, DateTimeProvider dateTimeProvider) {
     this.messages = messages;

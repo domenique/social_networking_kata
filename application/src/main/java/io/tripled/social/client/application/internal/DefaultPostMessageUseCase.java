@@ -1,11 +1,7 @@
 package io.tripled.social.client.application.internal;
 
 import io.tripled.social.client.application.PostMessageUseCase;
-import io.tripled.social.client.domain.DateTimeProvider;
-import io.tripled.social.client.domain.Message;
-import io.tripled.social.client.domain.SocialNetwork;
-import io.tripled.social.client.domain.SocialNetworkRepository;
-import io.tripled.social.client.domain.UserName;
+import io.tripled.social.client.domain.*;
 
 public class DefaultPostMessageUseCase implements PostMessageUseCase {
 

@@ -21,10 +21,6 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.Arrays;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class SocialClientStepDefs {
 

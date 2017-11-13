@@ -2,13 +2,7 @@ package io.tripled.social.client;
 
 import io.tripled.social.client.domain.DateTimeProvider;
 
-import java.time.Clock;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
-public class CucumberDateTimeProvider implements DateTimeProvider{
+public class CucumberDateTimeProvider implements DateTimeProvider {
 
   private Clock clock;
 

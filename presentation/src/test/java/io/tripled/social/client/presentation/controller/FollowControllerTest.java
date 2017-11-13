@@ -1,8 +1,8 @@
 package io.tripled.social.client.presentation.controller;
 
-import io.tripled.social.client.test.SpiedFollowUserUseCase;
 import io.tripled.social.client.presentation.TestOutput;
 import io.tripled.social.client.presentation.request.FollowCliRequest;
+import io.tripled.social.client.test.SpiedFollowUserUseCase;
 import org.junit.Before;
 import org.junit.Test;
 

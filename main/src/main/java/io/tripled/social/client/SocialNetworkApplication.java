@@ -20,35 +20,35 @@ import java.util.ServiceLoader;
 
 public class SocialNetworkApplication {
 
-    public static void main(String[] args) {
-        ReadEvalPrintLoop repl = createRepl();
+  public static void main(String[] args) {
+    ReadEvalPrintLoop repl = createRepl();
 
-        new Thread(repl).start();
-    }
+    new Thread(repl).start();
+  }
 
-    private static ReadEvalPrintLoop createRepl() {
-        Input input = new ConsoleInput(new BufferedReader(new InputStreamReader(System.in)));
-        Output output = new ConsoleOutput();
+  private static ReadEvalPrintLoop createRepl() {
+    Input input = new ConsoleInput(new BufferedReader(new InputStreamReader(System.in)));
+    Output output = new ConsoleOutput();
 
-        final DateTimeProvider dateTimeProvider = loadSystemDateProvider();
-        final SocialNetworkRepository socialNetworkRepository = loadSocialNetworkRepository();
-        final UseCaseFactory useCaseFactory = new UseCaseFactory(socialNetworkRepository);
-        return new ReadEvalPrintLoop(input, output,
-                new PostController(useCaseFactory.createPostMessageUseCase(dateTimeProvider)),
-                new ReadController(useCaseFactory.createReadMessagesUseCase()),
-                new WallController(useCaseFactory.createReadWallUseCase()),
-                new FollowController(useCaseFactory.createFollowUserUseCase()));
-    }
+    final DateTimeProvider dateTimeProvider = loadSystemDateProvider();
+    final SocialNetworkRepository socialNetworkRepository = loadSocialNetworkRepository();
+    final UseCaseFactory useCaseFactory = new UseCaseFactory(socialNetworkRepository);
+    return new ReadEvalPrintLoop(input, output,
+        new PostController(useCaseFactory.createPostMessageUseCase(dateTimeProvider)),
+        new ReadController(useCaseFactory.createReadMessagesUseCase()),
+        new WallController(useCaseFactory.createReadWallUseCase()),
+        new FollowController(useCaseFactory.createFollowUserUseCase()));
+  }
 
-    private static DateTimeProvider loadSystemDateProvider() {
-        final ServiceLoader<DateTimeProvider> repositories = ServiceLoader.load(DateTimeProvider.class);
-        final Optional<DateTimeProvider> first = repositories.findFirst();
-        return first.orElseThrow(RuntimeException::new);
-    }
+  private static DateTimeProvider loadSystemDateProvider() {
+    final ServiceLoader<DateTimeProvider> repositories = ServiceLoader.load(DateTimeProvider.class);
+    final Optional<DateTimeProvider> first = repositories.findFirst();
+    return first.orElseThrow(RuntimeException::new);
+  }
 
-    private static SocialNetworkRepository loadSocialNetworkRepository() {
-        final ServiceLoader<SocialNetworkRepository> repositories = ServiceLoader.load(SocialNetworkRepository.class);
-        final Optional<SocialNetworkRepository> first = repositories.findFirst();
-        return first.orElseThrow(RuntimeException::new);
-    }
+  private static SocialNetworkRepository loadSocialNetworkRepository() {
+    final ServiceLoader<SocialNetworkRepository> repositories = ServiceLoader.load(SocialNetworkRepository.class);
+    final Optional<SocialNetworkRepository> first = repositories.findFirst();
+    return first.orElseThrow(RuntimeException::new);
+  }
 }

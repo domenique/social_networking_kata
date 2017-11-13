@@ -1,12 +1,5 @@
 package io.tripled.social.client.application;
 
-import io.tripled.social.client.domain.DateTimeProvider;
-import io.tripled.social.client.domain.FollowingRelationship;
-import io.tripled.social.client.domain.Message;
-import io.tripled.social.client.domain.Messages;
-import io.tripled.social.client.domain.SocialNetwork;
-import io.tripled.social.client.domain.UserName;
-import io.tripled.social.client.domain.Relationships;
 import io.tripled.social.client.infrastructure.InMemoryMessages;
 import io.tripled.social.client.infrastructure.InMemoryRelationships;
 import io.tripled.social.client.infrastructure.TestDateTimeProvider;

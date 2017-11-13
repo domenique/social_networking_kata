@@ -5,8 +5,6 @@ import io.tripled.social.client.domain.Message;
 import io.tripled.social.client.infrastructure.TestSocialNetworkRepository;
 import org.junit.Test;
 
-import java.time.Clock;
-
 public class DefaultPostMessageUseCaseTest extends AbstractUseCaseTest {
 
   private PostMessageUseCase postMessageUseCase;

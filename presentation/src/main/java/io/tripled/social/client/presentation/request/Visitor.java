@@ -1,10 +1,6 @@
 package io.tripled.social.client.presentation.request;
 
 import io.tripled.social.client.presentation.Output;
-import io.tripled.social.client.presentation.request.FollowCliRequest;
-import io.tripled.social.client.presentation.request.PostCliRequest;
-import io.tripled.social.client.presentation.request.ReadCliRequest;
-import io.tripled.social.client.presentation.request.WallCliRequest;
 
 public interface Visitor {
 

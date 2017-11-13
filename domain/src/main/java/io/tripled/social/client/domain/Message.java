@@ -29,7 +29,7 @@ public class Message implements Comparable<Message> {
 
   String printWith(MessagePrinter printer, DateTimeProvider dateTimeProvider) {
     return printer.print(dateTimeProvider, userName.getUserName(), message, localDateTime);
-}
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -41,8 +41,8 @@ public class Message implements Comparable<Message> {
     }
     Message message1 = (Message) o;
     return Objects.equals(userName, message1.userName) &&
-           Objects.equals(message, message1.message) &&
-           Objects.equals(localDateTime, message1.localDateTime);
+        Objects.equals(message, message1.message) &&
+        Objects.equals(localDateTime, message1.localDateTime);
   }
 
   @Override

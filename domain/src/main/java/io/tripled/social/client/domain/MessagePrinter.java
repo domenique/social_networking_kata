@@ -40,8 +40,8 @@ public class MessagePrinter {
 
   private long diffInSeconds(LocalDateTime timeStamp, LocalDateTime now) {
     long diffMillis = now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() -
-                      timeStamp.atZone(ZoneId.systemDefault()).toInstant()
-                          .toEpochMilli();
+        timeStamp.atZone(ZoneId.systemDefault()).toInstant()
+            .toEpochMilli();
     return diffMillis / 1000;
   }
 }
