@@ -1,0 +1,6 @@
+include 'domain'
+include 'persistence'
+include 'application'
+include 'presentation'
+include 'main'
+

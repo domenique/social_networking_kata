@@ -1,0 +1,17 @@
+group 'io.tripled.socialnetwork'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.9
+
+javaModule.name = 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':domain')
+    compile 'junit:junit:4.11'
+}

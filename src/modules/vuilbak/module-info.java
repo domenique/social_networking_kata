@@ -1,3 +1,0 @@
-module vuilbak {
-//    requires domain;
-}
