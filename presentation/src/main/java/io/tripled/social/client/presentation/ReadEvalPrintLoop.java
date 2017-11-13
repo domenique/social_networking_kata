@@ -38,7 +38,6 @@ public class ReadEvalPrintLoop implements Runnable {
 
   @Override
   public void run() {
-    output.print("Started ...");
     quitCommandReceived = false;
     while (!quitCommandReceived) {
       String readLine = input.read();
@@ -48,11 +47,9 @@ public class ReadEvalPrintLoop implements Runnable {
       }
       executeCommands(readLine);
     }
-    output.print("Finished");
   }
 
   private void executeCommands(String readLine) {
-    output.print("read command [" + readLine + "]");
     requestFactory.create(readLine)
         .ifPresent(request -> request.accept(dispatcher, output));
   }

@@ -36,7 +36,7 @@ public class ReadEvalPrintLoopTest {
     repl.run();
 
     assertThat(repl.isStopped(), is(true));
-    output.assertSize(2);
+    output.assertIsEmpty();
   }
 
 }
