@@ -1,24 +1,24 @@
 package io.tripled.social.client.presentation.request;
 
 import io.tripled.social.client.presentation.CliRequest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
-import static org.junit.Assert.assertThat;
 
-public class CliRequestFactoryTest {
+class CliRequestFactoryTest {
 
   private CliRequestFactory factory;
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
     factory = new CliRequestFactory();
   }
 
   @Test
-  public void returnsPostCommand() throws Exception {
+  void returnsPostCommand() throws Exception {
     String input = "Alice -> Hi there!";
 
     CliRequest request = factory.create(input).orElse(null);
@@ -27,7 +27,7 @@ public class CliRequestFactoryTest {
   }
 
   @Test
-  public void returnsPostCommandWithTrimmedValues() throws Exception {
+  void returnsPostCommandWithTrimmedValues() throws Exception {
     String input = "  Alice   ->   Hi There!  ";
 
     CliRequest request = factory.create(input).orElse(null);
@@ -37,7 +37,7 @@ public class CliRequestFactoryTest {
   }
 
   @Test
-  public void returnsReadCommand() throws Exception {
+  void returnsReadCommand() throws Exception {
     String input = "Alice";
     String message = "  Alice  ";
 
@@ -47,7 +47,7 @@ public class CliRequestFactoryTest {
   }
 
   @Test
-  public void returnsReadCommandWithTrimmedValues() throws Exception {
+  void returnsReadCommandWithTrimmedValues() throws Exception {
     String input = "  Alice  ";
 
     CliRequest request = factory.create(input).orElse(null);
@@ -57,7 +57,7 @@ public class CliRequestFactoryTest {
   }
 
   @Test
-  public void returnsFollowCommand() throws Exception {
+  void returnsFollowCommand() throws Exception {
     String input = "Alice follows Ben";
 
     CliRequest cliRequest = factory.create(input).orElse(null);
@@ -66,7 +66,7 @@ public class CliRequestFactoryTest {
   }
 
   @Test
-  public void retunsWallCommand() throws Exception {
+  void retunsWallCommand() throws Exception {
     String input = "Ben wall";
 
     CliRequest cliRequest = factory.create(input).orElse(null);

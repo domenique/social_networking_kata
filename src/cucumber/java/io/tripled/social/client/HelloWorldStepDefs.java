@@ -4,8 +4,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class HelloWorldStepDefs {
 
@@ -13,17 +13,17 @@ public class HelloWorldStepDefs {
   private String response;
 
   @Given("^the system knows my name is \"(.*)\"$")
-  public void theSystemKnowsMyNameIs(String name) throws Throwable {
+  public void theSystemKnowsMyNameIs(String name) {
     this.myName = name;
   }
 
   @When("^I say hi to the system$")
-  public void iSayHiToTheSystem() throws Throwable {
+  public void iSayHiToTheSystem() {
     response = "Hello, " + myName;
   }
 
   @Then("^the system responds with \"(.*)\"$")
-  public void theSystemRespondsWith(String expectedResponse) throws Throwable {
+  public void theSystemRespondsWith(String expectedResponse) {
     assertThat(response, equalTo(expectedResponse));
   }
 }

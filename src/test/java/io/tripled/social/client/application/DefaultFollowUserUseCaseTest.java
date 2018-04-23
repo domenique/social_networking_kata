@@ -2,7 +2,7 @@ package io.tripled.social.client.application;
 
 import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.infrastructure.TestSocialNetworkRepository;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class DefaultFollowUserUseCaseTest extends AbstractUseCaseTest {
 
@@ -14,14 +14,14 @@ public class DefaultFollowUserUseCaseTest extends AbstractUseCaseTest {
   }
 
   @Test
-  public void canFollow() {
+  void canFollow() {
     useCase.follow("Alice", "Bob");
 
     assertUserIsFollowing("Alice", "Bob");
   }
 
   @Test
-  public void canFollowTwoUsers() {
+  void canFollowTwoUsers() {
     useCase.follow("Alice", "Bob");
     useCase.follow("Alice", "Jane");
 

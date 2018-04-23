@@ -1,15 +1,12 @@
 package io.tripled.social.client;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+class SocialClientTests {
 
-public class SocialClientTests {
+  @Test
+  void canRunTests() {
+    System.out.println("Hooray!");
 
-	@Test
-	public void canRunTests() {
-		System.out.println("Hooray!");
-
-	}
+  }
 }

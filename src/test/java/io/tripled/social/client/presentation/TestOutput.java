@@ -1,12 +1,12 @@
 package io.tripled.social.client.presentation;
 
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 
 import java.util.LinkedList;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasItems;
 
 public class TestOutput implements Output {
 
@@ -25,11 +25,8 @@ public class TestOutput implements Output {
     assertThat(this.outputs, hasItems(message));
   }
 
-  public void assertIsEmpty() {
+  void assertIsEmpty() {
     assertThat(this.outputs, empty());
   }
 
-  public void assertSize(int size) {
-    assertThat(this.outputs, Matchers.hasSize(size));
-  }
 }

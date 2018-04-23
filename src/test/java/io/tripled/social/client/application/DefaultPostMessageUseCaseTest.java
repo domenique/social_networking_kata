@@ -3,9 +3,7 @@ package io.tripled.social.client.application;
 import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.domain.Message;
 import io.tripled.social.client.infrastructure.TestSocialNetworkRepository;
-import org.junit.Test;
-
-import java.time.Clock;
+import org.junit.jupiter.api.Test;
 
 public class DefaultPostMessageUseCaseTest extends AbstractUseCaseTest {
 
@@ -17,19 +15,19 @@ public class DefaultPostMessageUseCaseTest extends AbstractUseCaseTest {
   }
 
   @Test
-  public void containsZeroMessages() {
+  void containsZeroMessages() {
     assertMessages();
   }
 
   @Test
-  public void userCanPostMessage() {
+  void userCanPostMessage() {
     postMessageUseCase.postMessage("Alice", "Hi There!");
 
     assertMessages(createMessage("Alice", "Hi There!"));
   }
 
   @Test
-  public void userCanPostMultipleMessages() {
+  void userCanPostMultipleMessages() {
     Message firstMessage = createMessage("Alice", "Hi There!");
     Message secondMessage = createMessage("Alice", "Hi there again!");
 
@@ -40,7 +38,7 @@ public class DefaultPostMessageUseCaseTest extends AbstractUseCaseTest {
   }
 
   @Test
-  public void multipleUsersCanPostAMessage() {
+  void multipleUsersCanPostAMessage() {
     Message firstMessage = createMessage("Alice", "Hi There!");
     Message secondMessage = createMessage("Bob", "Hi there from Bob!");
 

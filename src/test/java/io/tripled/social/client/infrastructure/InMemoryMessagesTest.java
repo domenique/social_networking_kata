@@ -2,8 +2,8 @@ package io.tripled.social.client.infrastructure;
 
 import io.tripled.social.client.domain.Message;
 import io.tripled.social.client.domain.UserName;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -11,17 +11,17 @@ import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-public class InMemoryMessagesTest {
+class InMemoryMessagesTest {
 
   private InMemoryMessages messages;
   private TestDateTimeProvider dateTimeProvider;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     dateTimeProvider = new TestDateTimeProvider(Clock.fixed(Instant.now(), ZoneId.systemDefault()));
     messages = new InMemoryMessages();
     messages.save(createMessage("Alice", "A message from Alice"));
@@ -30,14 +30,14 @@ public class InMemoryMessagesTest {
   }
 
   @Test
-  public void returnsAllMessages() {
+  void returnsAllMessages() {
     List<Message> allMessages = messages.findAll();
 
     assertThat(allMessages, hasSize(3));
   }
 
   @Test
-  public void returnsEmptyList() {
+  void returnsEmptyList() {
     UserName charlie = new UserName("Charlie");
 
     List<Message> messagesFromAlice = messages.findAllByUserName(charlie);
@@ -46,7 +46,7 @@ public class InMemoryMessagesTest {
   }
 
   @Test
-  public void canFindMessagesByUserName() {
+  void canFindMessagesByUserName() {
     UserName alice = new UserName("Alice");
 
     List<Message> messagesFromAlice = messages.findAllByUserName(alice);
@@ -56,7 +56,7 @@ public class InMemoryMessagesTest {
   }
 
   @Test
-  public void canFindMessagesByMultipleUsers() {
+  void canFindMessagesByMultipleUsers() {
     UserName alice = new UserName("Alice");
     UserName bob = new UserName("Bob");
 

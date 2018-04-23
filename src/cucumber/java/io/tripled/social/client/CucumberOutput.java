@@ -1,12 +1,12 @@
 package io.tripled.social.client;
 
+import io.tripled.social.client.presentation.Output;
+
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import io.tripled.social.client.presentation.Output;
-
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
 class CucumberOutput implements Output {
 

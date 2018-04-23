@@ -2,21 +2,21 @@ package io.tripled.social.client.infrastructure;
 
 import io.tripled.social.client.domain.FollowingRelationship;
 import io.tripled.social.client.domain.UserName;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-public class InMemoryRelationshipsTest {
+class InMemoryRelationshipsTest {
 
   private InMemoryRelationships relationships;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     relationships = new InMemoryRelationships();
     relationships.save(new FollowingRelationship(new UserName("Alice"), new UserName("Bob")));
     relationships.save(new FollowingRelationship(new UserName("Alice"), new UserName("Charlie")));
@@ -24,7 +24,7 @@ public class InMemoryRelationshipsTest {
   }
 
   @Test
-  public void canFindFollowing() {
+  void canFindFollowing() {
     UserName alice = new UserName("Alice");
 
     List<FollowingRelationship> relationshipsOfAlice = relationships.findRelationshipsFor(alice);
@@ -34,7 +34,7 @@ public class InMemoryRelationshipsTest {
   }
 
   @Test
-  public void returnsEmptyList() {
+  void returnsEmptyList() {
     UserName alice = new UserName("Bob");
 
     List<FollowingRelationship> relationshipsOfAlice = relationships.findRelationshipsFor(alice);

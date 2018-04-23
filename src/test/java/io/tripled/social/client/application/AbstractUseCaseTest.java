@@ -4,14 +4,14 @@ import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.domain.FollowingRelationship;
 import io.tripled.social.client.domain.Message;
 import io.tripled.social.client.domain.Messages;
+import io.tripled.social.client.domain.Relationships;
 import io.tripled.social.client.domain.SocialNetwork;
 import io.tripled.social.client.domain.UserName;
-import io.tripled.social.client.domain.Relationships;
 import io.tripled.social.client.infrastructure.InMemoryMessages;
 import io.tripled.social.client.infrastructure.InMemoryRelationships;
 import io.tripled.social.client.infrastructure.TestDateTimeProvider;
 import io.tripled.social.client.infrastructure.TestSocialNetworkRepository;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -22,8 +22,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 
 abstract class AbstractUseCaseTest {
 
@@ -31,7 +33,7 @@ abstract class AbstractUseCaseTest {
   private Relationships relationships;
   private TestDateTimeProvider dateTimeProvider;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     messages = new InMemoryMessages();
     relationships = new InMemoryRelationships();

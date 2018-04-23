@@ -12,7 +12,7 @@ public class CucumberDateTimeProvider implements DateTimeProvider{
 
   private Clock clock;
 
-  public CucumberDateTimeProvider(Clock clock) {
+  CucumberDateTimeProvider(Clock clock) {
     this.clock = clock;
   }
 
@@ -25,7 +25,7 @@ public class CucumberDateTimeProvider implements DateTimeProvider{
     clock = Clock.fixed(instant, ZoneId.systemDefault());
   }
 
-  public void fixateWithOffset(Duration duration) {
+  void fixateWithOffset(Duration duration) {
     clock = Clock.offset(clock, duration);
   }
 }

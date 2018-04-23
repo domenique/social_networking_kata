@@ -2,12 +2,12 @@ package io.tripled.social.client.application;
 
 import io.tripled.social.client.domain.DateTimeProvider;
 import io.tripled.social.client.infrastructure.TestSocialNetworkRepository;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
 public class DefaultReadMessagesUseCaseTest extends AbstractUseCaseTest {
 
@@ -19,7 +19,7 @@ public class DefaultReadMessagesUseCaseTest extends AbstractUseCaseTest {
   }
 
   @Test
-  public void canReadMessage() {
+  void canReadMessage() {
     saveMessage(createMessage("Alice", "I love the weather today"));
     fixateTimeWithOffset(Duration.ofMinutes(5));
 

@@ -12,11 +12,7 @@ class TestInput implements Input {
     inputs = new LinkedList<>();
   }
 
-  TestInput(Deque<String> inputs) {
-    this.inputs = new LinkedList<>(inputs);
-  }
-
-  public void addInput(String... inputs) {
+  void addInput(String... inputs) {
     this.inputs.addAll(Arrays.asList(inputs));
   }
 

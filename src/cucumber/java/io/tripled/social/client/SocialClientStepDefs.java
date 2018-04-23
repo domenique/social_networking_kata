@@ -21,10 +21,6 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.Arrays;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class SocialClientStepDefs {
 
@@ -58,35 +54,35 @@ public class SocialClientStepDefs {
   }
 
   @Given("^\"([^\"]*)\" sends message \"([^\"]*)\"$")
-  public void sendsMessage(String userName, String message) throws Throwable {
+  public void sendsMessage(String userName, String message) {
     input.sendInput(userName + " -> " + message);
     output.assertContains(userName + " posted: " + message);
   }
 
   @When("^the user reads the timeline of \"([^\"]*)\"$")
-  public void theUserReadsTheTimelineOf(String userName) throws Throwable {
+  public void theUserReadsTheTimelineOf(String userName) {
     input.sendInput(userName);
   }
 
   @Then("^the system responds with$")
-  public void theSystemRespondsWith(String expectedResponse) throws Throwable {
+  public void theSystemRespondsWith(String expectedResponse) {
     String lines[] = expectedResponse.split("\\r?\\n");
     output.assertContains(lines);
   }
 
   @Given("^\"([^\"]*)\" follows \"([^\"]*)\"$")
-  public void follows(String userName, String follower) throws Throwable {
+  public void follows(String userName, String follower) {
     input.sendInput(userName + " follows " + follower);
     output.assertContains(userName + " will follow " + follower);
   }
 
   @When("^the user reads the wall of \"([^\"]*)\"$")
-  public void theUserReadsTheWallOf(String userName) throws Throwable {
+  public void theUserReadsTheWallOf(String userName) {
     input.sendInput(userName + " wall");
   }
 
   @And("^(\\d+) seconds pass by$")
-  public void secondsPassBy(int seconds) throws Throwable {
+  public void secondsPassBy(int seconds) {
     dateTimeProvider.fixateWithOffset(Duration.ofSeconds(seconds));
   }
 }

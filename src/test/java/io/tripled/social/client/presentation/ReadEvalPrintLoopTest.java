@@ -1,37 +1,41 @@
 package io.tripled.social.client.presentation;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ReadEvalPrintLoopTest {
+class ReadEvalPrintLoopTest {
 
   private ReadEvalPrintLoop repl;
   private TestInput input;
   private TestOutput output;
 
-  @Before
-  public void setUpReplWithEchoCommand() {
+  @BeforeEach
+  void setUpReplWithEchoCommand() {
     input = new TestInput();
     output = new TestOutput();
     repl = new ReadEvalPrintLoop(input, output, null, null, null, null);
   }
 
-  @Test(expected = NullPointerException.class)
-  public void throwsExceptionWithNullInput() {
-    new ReadEvalPrintLoop(null, output, null, null, null, null);
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void throwsExceptionWithNullOutput() {
-    new ReadEvalPrintLoop(new TestInput(), null, null, null, null, null);
+  @Test
+  void throwsExceptionWithNullInput() {
+    assertThrows(NullPointerException.class, () -> {
+      new ReadEvalPrintLoop(null, output, null, null, null, null);
+    });
   }
 
   @Test
-  public void quits() {
+  void throwsExceptionWithNullOutput() {
+    assertThrows(NullPointerException.class, () -> {
+      new ReadEvalPrintLoop(new TestInput(), null, null, null, null, null);
+    });
+  }
+
+  @Test
+  void quits() {
     input.addInput("\\q");
 
     repl.run();

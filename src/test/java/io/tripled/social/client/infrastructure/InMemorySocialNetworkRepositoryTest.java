@@ -1,25 +1,25 @@
 package io.tripled.social.client.infrastructure;
 
 import io.tripled.social.client.domain.SocialNetwork;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
-import static org.junit.Assert.assertThat;
 
-public class InMemorySocialNetworkRepositoryTest {
+class InMemorySocialNetworkRepositoryTest {
 
   private InMemorySocialNetworkRepository repository;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     repository = new InMemorySocialNetworkRepository(new TestDateTimeProvider(Clock.systemDefaultZone()));
   }
 
   @Test
-  public void alwaysReturnsSameInstance() {
+  void alwaysReturnsSameInstance() {
     SocialNetwork socialNetwork = repository.get();
 
     assertThat(socialNetwork, sameInstance(repository.get()));

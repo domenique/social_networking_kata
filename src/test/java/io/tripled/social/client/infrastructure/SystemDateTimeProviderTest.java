@@ -1,22 +1,22 @@
 package io.tripled.social.client.infrastructure;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SystemDateTimeProviderTest {
+class SystemDateTimeProviderTest {
 
   private SystemDateTimeProvider dateTimeProvider;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     dateTimeProvider = new SystemDateTimeProvider();
   }
 
   @Test
-  public void returnsNow() {
+  void returnsNow() {
     assertThat(dateTimeProvider.now(), notNullValue());
   }
 }
