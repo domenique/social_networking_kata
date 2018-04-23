@@ -20,4 +20,4 @@ script:
 # Display Gradle, Groovy, JVM and other versions
   - ./gradlew --version
 # Run all tests
-  - ./gradlew test
+  - ./gradlew build
