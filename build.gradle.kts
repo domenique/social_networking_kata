@@ -12,9 +12,8 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-all:1.3")
 
     testImplementation("org.junit.platform:junit-platform-suite")
-    testImplementation("io.cucumber:cucumber-junit-platform-engine:7.29.0")
-    testImplementation("io.cucumber:cucumber-java:7.29.0")
-    testImplementation("io.cucumber:cucumber-junit:7.29.0")
+    testImplementation("io.cucumber:cucumber-junit-platform-engine:7.30.0")
+    testImplementation("io.cucumber:cucumber-java:7.30.0")
 }
 
 tasks.test {
