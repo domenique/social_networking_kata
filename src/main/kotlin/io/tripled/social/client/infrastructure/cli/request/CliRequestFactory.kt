@@ -14,7 +14,7 @@ class CliRequestFactory {
         return factories
             .filter { it.supports(input) }
             .map { it.create(input) }
-            .first()
+            .firstOrNull()
 
     }
 
