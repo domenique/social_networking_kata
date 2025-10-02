@@ -1,0 +1,24 @@
+# Gradle Version Catalog
+# This file introduces a TOML-based catalog for dependency and version management.
+# It currently mirrors the versions used in the build and can be adopted incrementally.
+
+[versions]
+kotlin = "2.2.0"
+strikt = "0.34.0"
+hamcrest = "1.3"
+cucumber = "7.30.0"
+
+[libraries]
+# Kotlin
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# Testing libraries
+strikt-core = { module = "io.strikt:strikt-core", version.ref = "strikt" }
+hamcrest-all = { module = "org.hamcrest:hamcrest-all", version.ref = "hamcrest" }
+
+# Cucumber
+cucumber-junit-platform-engine = { module = "io.cucumber:cucumber-junit-platform-engine", version.ref = "cucumber" }
+cucumber-java = { module = "io.cucumber:cucumber-java", version.ref = "cucumber" }
+
+# JUnit Platform
+junit-platform-suite = { module = "org.junit.platform:junit-platform-suite" }
