@@ -4,6 +4,10 @@
 
 [versions]
 kotlin = "2.2.0"
+
+ktor = "3.3.0"
+logback = "1.4.14"
+
 strikt = "0.34.0"
 hamcrest = "1.3"
 cucumber = "7.30.0"
@@ -11,6 +15,16 @@ cucumber = "7.30.0"
 [libraries]
 # Kotlin
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# KTor dependencies
+ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor-server-host-common = { module = "io.ktor:ktor-server-host-common", version.ref = "ktor" }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 
 # Testing libraries
 strikt-core = { module = "io.strikt:strikt-core", version.ref = "strikt" }
@@ -22,3 +36,8 @@ cucumber-java = { module = "io.cucumber:cucumber-java", version.ref = "cucumber"
 
 # JUnit Platform
 junit-platform-suite = { module = "org.junit.platform:junit-platform-suite" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

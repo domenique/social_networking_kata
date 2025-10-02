@@ -32,7 +32,8 @@ private fun createRepl(): ReadEvalPrintLoop {
     val socialNetworkRepository = InMemorySocialNetworkRepository(dateTimeProvider)
 
     return ReadEvalPrintLoop(
-        input, output,
+        input,
+        output,
         PostController(PostMessageUseCase(socialNetworkRepository, dateTimeProvider)),
         ReadController(ReadMessagesUseCase(socialNetworkRepository)),
         WallController(ReadWallUseCase(socialNetworkRepository)),

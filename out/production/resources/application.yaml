@@ -1,0 +1,6 @@
+ktor:
+  application:
+    modules:
+      - io.tripled.social.client.SocialNetworkKtorApplicationKt.module
+  deployment:
+    port: 8080
